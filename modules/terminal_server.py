@@ -68,6 +68,8 @@ class TerminalAuthServer(Handler):
                 self.terminal_sessions[uniqueId] = time.time()
                 response = {"response": "Connected."}
             else:
+                #TODO: FINISH ME!
+                """
                 self.terminal_sessions[uniqueId] = time.time()
                 command = queries["command"].replace("python", "python -u")
                 process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
@@ -83,5 +85,6 @@ class TerminalAuthServer(Handler):
                     response = {"response": rp}
                 except subprocess.TimeoutExpired:
                     response = {"response": "Timeout."}
+                """
 
         sendData(self, response, simpleParser, contentType="application/json")
