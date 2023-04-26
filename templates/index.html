@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Wave Function</title>
+        <link href="../static/styles/terminal.css" rel="stylesheet">
+        <link href="../static/styles/stats.css" rel="stylesheet">
+        <link href="../static/styles/style.css" rel="stylesheet">
+        <!-- Wave Function Collapse Background -->
+        <script src="../static/scripts/utils.js" type="application/javascript"></script>
+        <script src="../static/scripts/img_utils.js" type="application/javascript"></script>
+        <script src="../static/scripts/tiles.js" type="application/javascript"></script>
+        <script src="../static/scripts/grid.js" type="application/javascript"></script>
+        <script src="../static/scripts/wfc.js" type="application/javascript"></script>
+        <script src="../static/scripts/background.js" type="application/javascript"></script>
+
+        <script src="../static/scripts/terminal.js" type="application/javascript"></script>
+        <script src="../static/scripts/backend.js" type="application/javascript"></script>
+        <script src="../static/scripts/script.js" type="application/javascript"></script>
+    </head>
+    <body>
+        <canvas id="background" class="top-left"></canvas>
+        <div id="background-filter" class="top-left"></div>
+        <div id="container" class="top-left">
+            <div id="docker-stats" class="terminal">
+                <p>Loading docker stats...</p>
+            </div>
+            <div id="docker-compose-logs" class="terminal">
+                <p>Loading docker compose logs...</p>
+            </div>
+            <div id="machine-stats">
+                <div class="machine-stat" id="storage">
+                    <h3>Storage</h3>
+                    <div class="stat">
+                        <div class="stat-outer">
+                            <div class="stat-inner">
+                                <p>0%</p>
+                            </div>
+                        </div>
+                        <svg id="stat-svg" class="top-left">
+                            <defs>
+                                <linearGradient id="storage-gradient">
+                                    <stop offset="0%" stop-color="#fa2525"></stop>
+                                    <stop offset="100%" stop-color="#b51b1b"></stop>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50%" cy="50%" r="43.75%" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <p>Info</p>
+                </div>
+                <div class="machine-stat" id="download">
+                    <h3>Download</h3>
+                    <div class="stat">
+                        <div class="stat-outer">
+                            <div class="stat-inner">
+                                <p>0%</p>
+                            </div>
+                        </div>
+                        <svg id="stat-svg" class="top-left">
+                            <defs>
+                                <linearGradient id="download-gradient">
+                                    <stop offset="0%" stop-color="#3b25fa"></stop>
+                                    <stop offset="100%" stop-color="#2b1bb5"></stop>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50%" cy="50%" r="43.75%" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <p>Info</p>
+                </div>
+                <div class="machine-stat" id="upload">
+                    <h3>Upload</h3>
+                    <div class="stat">
+                        <div class="stat-outer">
+                            <div class="stat-inner">
+                                <p>0%</p>
+                            </div>
+                        </div>
+                        <svg id="stat-svg" class="top-left">
+                            <defs>
+                                <linearGradient id="upload-gradient">
+                                    <stop offset="0%" stop-color="#24f22f"></stop>
+                                    <stop offset="100%" stop-color="#1bb523"></stop>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50%" cy="50%" r="43.75%" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <p>Info</p>
+                </div>
+            </div>
+            <div id="session-terminal">
+                <div id="session-terminal-up" class="no-select">
+                    <button id="session-terminal-minimize" class="session-terminal-btn" onclick="toggleSessionTerminal()"><p>-</p></button>
+                    <button id="session-terminal-maximize" class="session-terminal-btn" onclick="toggleMaximizedSessionTerminal()"><p>-</p></button>
+                </div>
+                <div class="terminal">
+                    <p>Loading session terminal...</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
