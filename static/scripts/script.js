@@ -62,7 +62,7 @@ async function createProgressBars() {
 }
 
 async function startScript() {
-    if (isFromAndroid()) await initWFC();
+    if (!isFromAndroid()) await initWFC();
     await startUpdatingThreads();
     await initTerminals();
     toggleSessionTerminal();

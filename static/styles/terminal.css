@@ -1,3 +1,4 @@
+/* terminal.css file */
 :root {
     --terminal-text-color: rgb(0, 140, 0);
     --terminal-text-color-darker: rgb(1, 110, 1);
@@ -24,6 +25,10 @@
     overflow-x: hidden;
 
     transition: font-size 0.10s;
+}
+
+.terminal:hover {
+    cursor: text;
 }
 
 .terminal::-webkit-scrollbar {
@@ -60,6 +65,16 @@
 .terminal ::selection {
     background: var(--terminal-text-color);
     color: var(--terminal-background-color);
+}
+
+.password {
+    color: transparent !important;
+    text-shadow: 0 0 1em var(--terminal-text-color) !important;
+}
+
+.password ::selection {
+    background: var(--terminal-text-color) !important;
+    text-shadow: 0 0 1em var(--terminal-background-color) !important;
 }
 
 .terminal-form {

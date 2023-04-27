@@ -37,7 +37,7 @@ function compactRawData(rawData, width, height) {
     return imgData;
 }
 
-function extractImageData(img, fun) {
+function extractImageData(img) {
     let context = getTmpCanvas().getContext('2d');
     context.drawImage(img, 0, 0, resizedWidth, resizedHeight);
     let rawData = context.getImageData(0, 0, resizedWidth, resizedHeight);

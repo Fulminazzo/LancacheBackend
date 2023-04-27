@@ -2,6 +2,8 @@
 from time import sleep
 import psutil
 
+# A simple script that uses the psutil module to check received
+# and sent network traffic in one second.
 def main():
     try:
         prev_rx = -1

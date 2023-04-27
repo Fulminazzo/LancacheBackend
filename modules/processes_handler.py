@@ -4,10 +4,7 @@ import subprocess
 import threading
 
 def readProcessStdout(handler, process_string, process_dir, process_id):
-    while True:
-        if handler.is_shutting_down():
-            return
-
+    while not handler.is_shutting_down():
         process = subprocess.Popen(process_string, shell=True, cwd=process_dir, stdout=subprocess.PIPE)
 
         for line in iter(process.stdout.readline, ""):
@@ -17,12 +14,14 @@ def readProcessStdout(handler, process_string, process_dir, process_id):
                 break
 
             if handler.is_shutting_down():
-                return
+                break
 
             if line.upper().startswith("\x1b[2J\x1b[H"):
                 handler.set_output([], process_id)
 
             handler.append_output(line, process_id)
+
+        process.terminate()
 
 class ProcessesHandler:
     def __init__(self):

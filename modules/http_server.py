@@ -3,16 +3,12 @@ import json
 import types
 from http.server import SimpleHTTPRequestHandler
 
-
-def simpleParser(data):
-    return data
-
 def writeToHandler(handler, data, is_json):
     if is_json:
         data = json.dumps({"data": data})
     handler.wfile.write(data.encode('utf-8'))
 
-def sendData(handler, data, parser, response=200, contentType="text/html"):
+def sendData(handler, data, parser=lambda x:x, response=200, contentType="text/html"):
     handler.send_response(response)
     handler.send_header("Content-type", contentType)
     handler.send_header('Access-Control-Allow-Origin', '*')
@@ -40,14 +36,13 @@ class Handler(SimpleHTTPRequestHandler):
                 open("." + request, "rb")
                 SimpleHTTPRequestHandler.do_GET(self)
             except FileNotFoundError:
-                sendData(self, notFound(), simpleParser)
+                sendData(self, notFound())
         else:
             handler = self.slave_handlers[request]
             sendData(self, handler["data"], handler["parser"], response=handler["response"],
                      contentType=handler["contentType"])
 
-    def add_simple_handler(self, request, data, response=200, contentType="text/html", api=False,
-                           parser=simpleParser):
+    def add_simple_handler(self, request, data, response=200, contentType="text/html", api=False, parser=lambda x:x):
         request = request[1:] if request.startswith("/") else request
         request = "api/" + request if api else request
         self.slave_handlers["/" + request] = {
@@ -58,9 +53,10 @@ class Handler(SimpleHTTPRequestHandler):
         }
 
     def add_functional_handler(self, request, function:types.MethodType, args=None, response=200,
-                               contentType="text/html", api=False, parser=simpleParser):
+                               contentType="text/html", api=False, parser=lambda x:x):
         if args is None:
             args = ()
+
         request = request[1:] if request.startswith("/") else request
         request = "api/" + request if api else request
         self.slave_handlers["/" + request] = {

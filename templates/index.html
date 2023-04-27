@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Wave Function</title>
+        <title>Steam Lancache</title>
         <link href="../static/styles/terminal.css" rel="stylesheet">
         <link href="../static/styles/stats.css" rel="stylesheet">
         <link href="../static/styles/style.css" rel="stylesheet">
@@ -21,14 +21,18 @@
     <body>
         <canvas id="background" class="top-left"></canvas>
         <div id="background-filter" class="top-left"></div>
+
         <div id="container" class="top-left">
+
             <div id="docker-stats" class="terminal">
                 <p>Loading docker stats...</p>
             </div>
+
             <div id="docker-compose-logs" class="terminal">
                 <p>Loading docker compose logs...</p>
             </div>
-            <div id="machine-stats">
+
+            <div id="machine-stats-container">
                 <div class="machine-stat" id="storage">
                     <h3>Storage</h3>
                     <div class="stat">
@@ -49,6 +53,7 @@
                     </div>
                     <p>Info</p>
                 </div>
+
                 <div class="machine-stat" id="download">
                     <h3>Download</h3>
                     <div class="stat">
@@ -69,6 +74,7 @@
                     </div>
                     <p>Info</p>
                 </div>
+
                 <div class="machine-stat" id="upload">
                     <h3>Upload</h3>
                     <div class="stat">
@@ -90,15 +96,29 @@
                     <p>Info</p>
                 </div>
             </div>
+
             <div id="session-terminal">
                 <div id="session-terminal-up" class="no-select">
-                    <button id="session-terminal-minimize" class="session-terminal-btn" onclick="toggleSessionTerminal()"><p>-</p></button>
-                    <button id="session-terminal-maximize" class="session-terminal-btn" onclick="toggleMaximizedSessionTerminal()"><p>-</p></button>
+                    <button id="session-terminal-minimize" class="session-terminal-btn" onclick="toggleSessionTerminal()">
+                        <p>-</p>
+                    </button>
+                    <button id="session-terminal-maximize" class="session-terminal-btn" onclick="toggleMaximizedSessionTerminal()">
+                        <p>-</p>
+                    </button>
                 </div>
                 <div class="terminal">
-                    <p>Loading session terminal...</p>
+                    <p>Please insert a password.</p>
+                    <form class="terminal-form" action="#">
+                        <p class="terminal-user"></p>
+                        <div class="terminal-input-container">
+                            <label for="terminal-input"></label>
+                            <textarea id="terminal-input" class="password" type="password" rows="1" wrap="hard"></textarea>
+                            <!--<b id="terminal-cursor">█</b>-->
+                        </div>
+                    </form>
                 </div>
             </div>
+
         </div>
     </body>
 </html>

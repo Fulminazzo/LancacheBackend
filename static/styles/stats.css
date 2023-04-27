@@ -1,4 +1,5 @@
-#machine-stats {
+/* stats.css file */
+#machine-stats-container {
     position: relative;
     display: flex;
     align-items: center;
@@ -11,15 +12,15 @@
     background: #EFEFEF;
 }
 
-#machine-stats::-webkit-scrollbar {
+#machine-stats-container::-webkit-scrollbar {
     width: 15px;
 }
 
-#machine-stats::-webkit-scrollbar-track {
+#machine-stats-container::-webkit-scrollbar-track {
     border-left: 1px solid rgba(99, 99, 99, 0.5);
 }
 
-#machine-stats::-webkit-scrollbar-thumb {
+#machine-stats-container::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 0 1px #A0A0A0,
                 inset 0 0 0 10px #EFEFEF;
     border: 3px solid transparent;
@@ -27,7 +28,7 @@
     transition: box-shadow 0.125s;
 }
 
-#machine-stats::-webkit-scrollbar-thumb:hover {
+#machine-stats-container::-webkit-scrollbar-thumb:hover {
     box-shadow: inset 0 0 0 1px #A0A0A0,
     inset 0 0 0 10px #D6D6D6;
 }
@@ -94,7 +95,6 @@
     aspect-ratio: 1 / 1;
 }
 
-/* 360 : 520 */
 #stat-svg > circle {
     fill: none;
     stroke-width: 12.5%;

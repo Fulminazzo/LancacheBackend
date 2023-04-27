@@ -94,10 +94,6 @@ class WFCanvas {
         this.autoFix = automaticRedraw;
     }
 
-    setDrawLines(showLines) {
-        this.showLines = showLines;
-    }
-
     #pickCell(sorted) {
         return pickGeneral(sorted);
     }

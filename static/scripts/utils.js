@@ -1,3 +1,13 @@
+function formatBytes(num) {
+    const units = ['B', 'KB', 'MB', 'G'];
+    let count = 0;
+    while (num > 1024) {
+        num /= 1024;
+        count++;
+    }
+    return Math.round(num) + units[count];
+}
+
 function drawLine(context, start_x, end_x, start_y, end_y) {
     context.strokeStyle = "#ffffff";
     context.beginPath();
@@ -27,4 +37,8 @@ function removeDuplicateTiles(tiles) {
 
 function rotateMatrix(matrix) {
     return matrix[0].map((val, index) => matrix.map(row => row[index]).reverse());
+}
+
+function isFromAndroid() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(navigator.userAgent);
 }
