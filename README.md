@@ -1,0 +1,3 @@
+# Steam LancacheRPI Backend
+This is a project made to monitor and even control (using SSH) a server running the LancacheRPI docker container.
+The program uses the Python3 http.server module to create a backend server served at port 98. Assuming the url is http://0.0.0.0, the main page will show the four main components: a resources monitor, two terminals one linked to the command ```docker stats``` and the other one showing the logs of the docker compose, and finally an interactive terminal that requires a SSH server on the machine. The terminal will first check if the user knows the SSH password, then it will open a terminal ready to execute any given commands.
