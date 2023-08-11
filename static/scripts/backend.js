@@ -2,12 +2,13 @@ let prevDatas = {}
 const url = "//10.0.0.50:98/api/"
 
 async function fetchGeneralJSONData(data) {
-    return await fetch(encodeURI(url + data))
-        .then(response =>
-            response.json()
-                .then(json => json)
-                .catch(() => null))
-        .catch(() => null);
+    return await fetch(encodeURI(url + data), {
+        mode: 'no-cors'
+    }).then(response =>
+        response.json()
+            .then(json => json)
+            .catch(() => null))
+    .catch(() => null);
 }
 
 async function updateGeneralTerminal(terminalId) {

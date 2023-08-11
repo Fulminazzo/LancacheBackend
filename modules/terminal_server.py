@@ -145,17 +145,16 @@ class TerminalAuthServer(Handler):
         elif "command" in queries:
             terminal_session["time"] = time.time()
             command = decodeB64(queries["command"]).replace("python", "python -u")
+            prev = os.path.abspath(os.getcwd())
+            os.chdir(terminal_session["dir"])
             if command.lower().startswith("cd"):
                 dir_name = command.split(" ")[1]
-                init_dir_name = dir_name
                 if not dir_name.startswith(".") and not dir_name.startswith("/"):
                     dir_name = "./" + dir_name
+                init_dir_name = dir_name
+                os.chdir(dir_name)
                 try:
-                    prev = os.path.abspath(os.getcwd())
-                    os.chdir(terminal_session["dir"])
-                    os.chdir(dir_name)
                     terminal_session["dir"] = os.path.abspath(os.getcwd())
-                    os.chdir(prev)
                     response = {"response": "request-userdata"}
                 except NotADirectoryError:
                     response = {"response": "cd: not a directory: {}".format(init_dir_name)}
@@ -177,6 +176,8 @@ class TerminalAuthServer(Handler):
                 time.sleep(0.125)
                 if terminal_process.process.poll() is None:
                     response["finished"] = False
+            os.chdir(prev)
+
         else:
             terminal_session["time"] = time.time()
             response = {"response": "Connected."}
